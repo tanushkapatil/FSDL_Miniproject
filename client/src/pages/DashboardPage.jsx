@@ -59,7 +59,7 @@ const DashboardPage = () => {
   const fetchOpportunities = async () => {
     try {
       setLoading(true);
-      const response = await axiosClient.get("/opportunities");
+      const response = await axiosClient.get("/api/opportunities");
       const items = Array.isArray(response.data)
         ? response.data
         : Array.isArray(response.data?.opportunities)
@@ -153,7 +153,7 @@ const DashboardPage = () => {
     try {
       setSubmitting(true);
       console.log("Submitting:", payload);
-      await axiosClient.post("/submissions", payload);
+      await axiosClient.post("/api/submissions", payload);
       showToast("Submission added successfully", "success");
       resetForm();
     } catch (error) {

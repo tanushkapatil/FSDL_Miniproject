@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async ({ email, password }) => {
-    const response = await axiosClient.post("/auth/login", { email, password });
+    const response = await axiosClient.post("/api/auth/login", { email, password });
     const nextToken = response.data?.token;
     const nextUser = response.data?.user;
 
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (payload) => {
-    return axiosClient.post("/auth/register", payload);
+    return axiosClient.post("/api/auth/register", payload);
   };
 
   const logout = () => {
