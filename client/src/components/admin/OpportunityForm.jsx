@@ -5,9 +5,58 @@ const initialForm = {
   company: "",
   role: "",
   description: "",
-  deadline: "",
+  deadlineDate: "",
+  deadlineTime: "",
   applyLink: "",
   domain: "",
+};
+
+const getDeadlineParts = (deadline) => {
+  if (!deadline) {
+    return { deadlineDate: "", deadlineTime: "" };
+  }
+
+  const date = new Date(deadline);
+  if (Number.isNaN(date.getTime())) {
+    return { deadlineDate: "", deadlineTime: "" };
+  }
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  return {
+    deadlineDate: `${year}-${month}-${day}`,
+    deadlineTime: `${hours}:${minutes}`,
+  };
+};
+
+const buildDeadlineIso = (deadlineDate, deadlineTime) => {
+  if (!deadlineDate || !deadlineTime) {
+    return "";
+  }
+
+  const [hourString, minuteString] = deadlineTime.split(":");
+  const hour = Number(hourString);
+  const minute = Number(minuteString);
+
+  if (Number.isNaN(hour) || Number.isNaN(minute)) {
+    return "";
+  }
+
+  const localDate = new Date(
+    Number(deadlineDate.slice(0, 4)),
+    Number(deadlineDate.slice(5, 7)) - 1,
+    Number(deadlineDate.slice(8, 10)),
+    hour,
+    minute,
+    0,
+    0
+  );
+
+  return localDate.toISOString();
 };
 
 const OpportunityForm = ({ initialValues, onSubmit, isSaving, onCancelEdit }) => {
@@ -15,12 +64,15 @@ const OpportunityForm = ({ initialValues, onSubmit, isSaving, onCancelEdit }) =>
 
   useEffect(() => {
     if (initialValues) {
+      const deadlineParts = getDeadlineParts(initialValues.deadline);
+
       setFormData({
         title: initialValues.title || "",
         company: initialValues.company || "",
         role: initialValues.role || "",
         description: initialValues.description || "",
-        deadline: initialValues.deadline ? String(initialValues.deadline).slice(0, 10) : "",
+        deadlineDate: deadlineParts.deadlineDate,
+        deadlineTime: deadlineParts.deadlineTime,
         applyLink: initialValues.applyLink || "",
         domain: initialValues.domain || "",
       });
@@ -36,7 +88,10 @@ const OpportunityForm = ({ initialValues, onSubmit, isSaving, onCancelEdit }) =>
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(formData);
+    onSubmit({
+      ...formData,
+      deadline: buildDeadlineIso(formData.deadlineDate, formData.deadlineTime),
+    });
   };
 
   return (
@@ -87,11 +142,22 @@ const OpportunityForm = ({ initialValues, onSubmit, isSaving, onCancelEdit }) =>
           />
         </label>
         <label className="flex flex-col gap-2 text-sm text-slate-600">
-          Deadline
+          Deadline Date
           <input
             type="date"
-            name="deadline"
-            value={formData.deadline}
+            name="deadlineDate"
+            value={formData.deadlineDate}
+            onChange={handleChange}
+            required
+            className="rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-brand-500"
+          />
+        </label>
+        <label className="flex flex-col gap-2 text-sm text-slate-600">
+          Deadline Time
+          <input
+            type="time"
+            name="deadlineTime"
+            value={formData.deadlineTime}
             onChange={handleChange}
             required
             className="rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-brand-500"

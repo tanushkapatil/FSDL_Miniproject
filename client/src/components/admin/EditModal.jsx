@@ -1,6 +1,56 @@
 const EditModal = ({ opportunity, onClose, onSave, isSaving }) => {
   if (!opportunity) return null;
 
+  const getDeadlineParts = (deadline) => {
+    if (!deadline) {
+      return { deadlineDate: "", deadlineTime: "" };
+    }
+
+    const date = new Date(deadline);
+    if (Number.isNaN(date.getTime())) {
+      return { deadlineDate: "", deadlineTime: "" };
+    }
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return {
+      deadlineDate: `${year}-${month}-${day}`,
+      deadlineTime: `${hours}:${minutes}`,
+    };
+  };
+
+  const buildDeadlineIso = (deadlineDate, deadlineTime) => {
+    if (!deadlineDate || !deadlineTime) {
+      return "";
+    }
+
+    const [hourString, minuteString] = deadlineTime.split(":");
+    const hour = Number(hourString);
+    const minute = Number(minuteString);
+
+    if (Number.isNaN(hour) || Number.isNaN(minute)) {
+      return "";
+    }
+
+    const localDate = new Date(
+      Number(deadlineDate.slice(0, 4)),
+      Number(deadlineDate.slice(5, 7)) - 1,
+      Number(deadlineDate.slice(8, 10)),
+      hour,
+      minute,
+      0,
+      0
+    );
+
+    return localDate.toISOString();
+  };
+
+  const deadlineParts = getDeadlineParts(opportunity.deadline);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -9,7 +59,7 @@ const EditModal = ({ opportunity, onClose, onSave, isSaving }) => {
       company: formData.get("company"),
       role: formData.get("role"),
       description: formData.get("description"),
-      deadline: formData.get("deadline"),
+      deadline: buildDeadlineIso(formData.get("deadlineDate"), formData.get("deadlineTime")),
       applyLink: formData.get("applyLink"),
       domain: formData.get("domain"),
     });
@@ -46,8 +96,12 @@ const EditModal = ({ opportunity, onClose, onSave, isSaving }) => {
             <textarea name="description" defaultValue={opportunity.description} rows={4} required className="rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-brand-500" />
           </label>
           <label className="flex flex-col gap-2 text-sm text-slate-600">
-            Deadline
-            <input type="date" name="deadline" defaultValue={String(opportunity.deadline).slice(0, 10)} required className="rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-brand-500" />
+            Deadline Date
+            <input type="date" name="deadlineDate" defaultValue={deadlineParts.deadlineDate} required className="rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-brand-500" />
+          </label>
+          <label className="flex flex-col gap-2 text-sm text-slate-600">
+            Deadline Time
+            <input type="time" name="deadlineTime" defaultValue={deadlineParts.deadlineTime} required className="rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-brand-500" />
           </label>
           <label className="flex flex-col gap-2 text-sm text-slate-600">
             Domain

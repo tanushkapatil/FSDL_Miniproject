@@ -11,6 +11,20 @@ const getDaysLeft = (deadline) => {
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 };
 
+const formatDeadline = (value) => {
+  const date = toDate(value);
+  if (!date) return "N/A";
+
+  return date.toLocaleString([], {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
+
 const OpportunityModal = ({ opportunity, isBookmarked, onToggleBookmark, onClose }) => {
   if (!opportunity) return null;
 
@@ -47,7 +61,7 @@ const OpportunityModal = ({ opportunity, isBookmarked, onToggleBookmark, onClose
           </p>
           <p>
             <span className="font-semibold text-slate-900">Deadline:</span>{" "}
-            {deadline ? new Date(deadline).toLocaleDateString() : "N/A"}
+            {formatDeadline(deadline)}
           </p>
           {typeof daysLeft === "number" && daysLeft >= 0 && (
             <p className="font-semibold text-brand-700">

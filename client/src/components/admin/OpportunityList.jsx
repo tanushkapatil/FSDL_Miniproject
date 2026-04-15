@@ -8,6 +8,22 @@ const toDaysLeft = (deadline) => {
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 };
 
+const formatDeadline = (deadline) => {
+  if (!deadline) return "N/A";
+
+  const date = new Date(deadline);
+  if (Number.isNaN(date.getTime())) return "N/A";
+
+  return date.toLocaleString([], {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
+
 const OpportunityList = ({ opportunities, onEdit, onDelete }) => {
   return (
     <div className="grid gap-4 xl:grid-cols-2">
@@ -28,7 +44,7 @@ const OpportunityList = ({ opportunities, onEdit, onDelete }) => {
             </div>
 
             <p className={`mt-4 text-sm ${urgent ? "font-semibold text-alert-500" : "text-slate-600"}`}>
-              Deadline: {opportunity.deadline ? new Date(opportunity.deadline).toLocaleDateString() : "N/A"}
+              Deadline: {formatDeadline(opportunity.deadline)}
             </p>
             {typeof daysLeft === "number" && daysLeft >= 0 && (
               <p className={`mt-1 text-xs ${urgent ? "font-semibold text-alert-500" : "text-slate-500"}`}>

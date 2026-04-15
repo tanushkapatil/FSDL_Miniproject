@@ -11,6 +11,20 @@ const getDaysLeft = (deadline) => {
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 };
 
+const formatDeadline = (value) => {
+  const date = toDate(value);
+  if (!date) return "N/A";
+
+  return date.toLocaleString([], {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
+
 const OpportunityCard = ({ opportunity, isBookmarked, onToggleBookmark, onViewMore }) => {
   const deadline = opportunity.deadline || opportunity.date;
   const daysLeft = getDaysLeft(deadline);
@@ -38,7 +52,7 @@ const OpportunityCard = ({ opportunity, isBookmarked, onToggleBookmark, onViewMo
       </div>
 
       <p className={`mt-4 text-sm ${urgent ? "font-semibold text-alert-500" : "text-slate-600"}`}>
-        Deadline: {deadline ? new Date(deadline).toLocaleDateString() : "N/A"}
+        Deadline: {formatDeadline(deadline)}
       </p>
 
       {typeof daysLeft === "number" && daysLeft >= 0 && (
