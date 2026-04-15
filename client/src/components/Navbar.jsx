@@ -41,8 +41,8 @@ const Navbar = ({ bookmarkedCount }) => {
       setProfileLoading(true);
 
       const [meResponse, submissionsResponse] = await Promise.all([
-        axiosClient.get("/api/auth/me"),
-        axiosClient.get("/api/submissions/me"),
+        axiosClient.get("/auth/me"),
+        axiosClient.get("/submissions/me"),
       ]);
 
       setUserProfile(meResponse.data?.user || user);

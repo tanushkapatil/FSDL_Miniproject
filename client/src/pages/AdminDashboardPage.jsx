@@ -35,8 +35,8 @@ const AdminDashboardPage = () => {
     try {
       setLoading(true);
       const [submissionsResponse, opportunitiesResponse] = await Promise.all([
-        axiosClient.get("/api/submissions"),
-        axiosClient.get("/api/opportunities"),
+        axiosClient.get("/submissions"),
+        axiosClient.get("/opportunities"),
       ]);
 
       setSubmissions(Array.isArray(submissionsResponse.data) ? submissionsResponse.data : []);
@@ -108,10 +108,10 @@ const AdminDashboardPage = () => {
     try {
       setSavingOpportunity(true);
       if (selectedOpportunity) {
-        await axiosClient.put(`/api/opportunities/${selectedOpportunity._id}`, payload);
+        await axiosClient.put(`/opportunities/${selectedOpportunity._id}`, payload);
         showToast("Opportunity updated successfully", "success");
       } else {
-        await axiosClient.post("/api/opportunities", payload);
+        await axiosClient.post("/opportunities", payload);
         showToast("Opportunity added successfully", "success");
       }
 
@@ -129,7 +129,7 @@ const AdminDashboardPage = () => {
     if (!confirmed) return;
 
     try {
-      await axiosClient.delete(`/api/opportunities/${opportunity._id}`);
+      await axiosClient.delete(`/opportunities/${opportunity._id}`);
       showToast("Opportunity deleted successfully", "success");
       await fetchAdminData();
     } catch (error) {

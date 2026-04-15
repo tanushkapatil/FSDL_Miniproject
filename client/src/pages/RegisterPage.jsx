@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import axiosClient from "../api/axiosClient";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const RegisterPage = () => {
 
     try {
       setIsSubmitting(true);
-      const response = await axios.post("http://localhost:5000/api/auth/register", payload);
+      const response = await axiosClient.post("/auth/register", payload);
       console.log("Register response:", response.data);
 
       setSuccess("Registration successful");

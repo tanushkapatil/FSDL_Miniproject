@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { login, isAuthenticated, user, isLoadingAuth } = useAuth();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  if (!isLoadingAuth && isAuthenticated) {
-    return <Navigate to={user?.role === "admin" ? "/admin-dashboard" : "/dashboard"} replace />;
-  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
