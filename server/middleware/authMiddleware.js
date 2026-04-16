@@ -1,7 +1,17 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-const ADMIN_EMAIL = "admin@gmail.com";
+const DEFAULT_ADMIN_EMAIL = "admin@gmail.com";
+
+const getAdminEmails = () => {
+  const configured = process.env.ADMIN_EMAILS || process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
+  return new Set(
+    configured
+      .split(",")
+      .map((email) => email.toLowerCase().trim())
+      .filter(Boolean)
+  );
+};
 
 export const protect = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -43,7 +53,9 @@ export const protect = async (req, res, next) => {
     }
 
     // Ensure fixed admin account is always treated as admin.
-    if (currentUser.email?.toLowerCase() === ADMIN_EMAIL && currentUser.role !== "admin") {
+    const adminEmails = getAdminEmails();
+
+    if (adminEmails.has(currentUser.email?.toLowerCase()) && String(currentUser.role).toLowerCase() !== "admin") {
       currentUser.role = "admin";
       await currentUser.save();
     }
@@ -65,7 +77,9 @@ export const protect = async (req, res, next) => {
 };
 
 export const allowAdmin = (req, res, next) => {
-  if (!req.user || req.user.role !== "admin") {
+  const role = String(req.user?.role || "").toLowerCase();
+
+  if (!req.user || role !== "admin") {
     return res.status(403).json({
       success: false,
       message: "Access denied: admin only",
@@ -76,7 +90,9 @@ export const allowAdmin = (req, res, next) => {
 };
 
 export const allowUser = (req, res, next) => {
-  if (!req.user || req.user.role !== "user") {
+  const role = String(req.user?.role || "").toLowerCase();
+
+  if (!req.user || role !== "user") {
     return res.status(403).json({
       success: false,
       message: "Access denied: user only",

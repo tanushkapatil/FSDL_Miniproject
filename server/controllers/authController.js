@@ -3,8 +3,20 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 const isValidEmail = (email) => /^\S+@\S+\.\S+$/.test(email);
-const ADMIN_EMAIL = "admin@gmail.com";
-const ADMIN_PASSWORD = "admin";
+const DEFAULT_ADMIN_EMAIL = "admin@gmail.com";
+const DEFAULT_ADMIN_PASSWORD = "admin";
+
+const getAdminEmails = () => {
+  const configured = process.env.ADMIN_EMAILS || process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
+  return new Set(
+    configured
+      .split(",")
+      .map((email) => email.toLowerCase().trim())
+      .filter(Boolean)
+  );
+};
+
+const getAdminPassword = () => process.env.ADMIN_PASSWORD || DEFAULT_ADMIN_PASSWORD;
 
 const handleControllerError = (error, res, context) => {
   console.error(`${context} error:`, error);
@@ -32,7 +44,9 @@ export const registerUser = async (req, res) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    if (normalizedEmail === ADMIN_EMAIL) {
+    const adminEmails = getAdminEmails();
+
+    if (adminEmails.has(normalizedEmail)) {
       return res.status(403).json({ message: "Admin account cannot be registered" });
     }
 
@@ -74,21 +88,24 @@ export const login = async (req, res) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    if (normalizedEmail === ADMIN_EMAIL) {
-      if (password !== ADMIN_PASSWORD) {
+    const adminEmails = getAdminEmails();
+    const adminPassword = getAdminPassword();
+
+    if (adminEmails.has(normalizedEmail)) {
+      if (password !== adminPassword) {
         return res.status(401).json({
           success: false,
           message: "Invalid email or password",
         });
       }
 
-      let adminUser = await User.findOne({ email: ADMIN_EMAIL }).select("+password");
+      let adminUser = await User.findOne({ email: normalizedEmail }).select("+password");
 
       if (!adminUser) {
-        const hashedAdminPassword = await bcrypt.hash(ADMIN_PASSWORD, 10);
+        const hashedAdminPassword = await bcrypt.hash(adminPassword, 10);
         adminUser = await User.create({
           name: "Admin",
-          email: ADMIN_EMAIL,
+          email: normalizedEmail,
           password: hashedAdminPassword,
           role: "admin",
         });
