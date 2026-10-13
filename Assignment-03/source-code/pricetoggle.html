@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Toggle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="pricing-shell">
+      <p class="eyebrow">Pricing</p>
+      <h1>Choose the plan that fits your team</h1>
+      <p class="subtitle">Switch between monthly and yearly pricing to compare the options at a glance.</p>
+
+      <button id="toggleBtn" class="toggle-btn">Switch to Yearly</button>
+
+      <div class="plans">
+        <div class="plan">
+          <p class="plan-label">Starter</p>
+          <h3>Basic</h3>
+          <p id="basicPrice" class="price">₹500 <span>/ month</span></p>
+          <p class="plan-note">For personal projects and learning.</p>
+        </div>
+
+        <div class="plan featured">
+          <p class="plan-label">Popular</p>
+          <h3>Pro</h3>
+          <p id="proPrice" class="price">₹1000 <span>/ month</span></p>
+          <p class="plan-note">For growing teams and client work.</p>
+        </div>
+
+        <div class="plan">
+          <p class="plan-label">Best Value</p>
+          <h3>Premium</h3>
+          <p id="premiumPrice" class="price">₹1500 <span>/ month</span></p>
+          <p class="plan-note">For advanced needs and scaling fast.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
