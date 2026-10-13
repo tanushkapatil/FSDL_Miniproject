@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="logo">NovaSite</a>
+
+    <div class="menu" id="menu">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+
+      <div class="dropdown">
+        <button class="dropbtn" id="dropbtn" aria-expanded="false" aria-controls="services-menu">Services</button>
+        <div class="dropdown-content">
+          <a href="#">Web Design</a>
+          <a href="#">Development</a>
+          <a href="#">SEO</a>
+        </div>
+      </div>
+
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <main class="hero">
+    <h1>Responsive Navbar with Dropdown</h1>
+    <p>Resize the screen to test the mobile menu and dropdown behavior.</p>
+  </main>
+
+  <section class="features">
+    <div class="feature-card">
+      <h2>Clean Layout</h2>
+      <p>Simple spacing and clear sections keep the page easy to read.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2>Mobile Friendly</h2>
+      <p>The menu and content stay usable on smaller screens too.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2>Easy to Edit</h2>
+      <p>You can change the text here without touching the navigation code.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
