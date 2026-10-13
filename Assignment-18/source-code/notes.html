@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Quick Capture</p>
+        <h1>Notes App</h1>
+        <p class="subtitle">Write short notes and keep them saved in your browser.</p>
+      </div>
+      <span class="tag">Local Storage</span>
+    </section>
+
+    <section class="app card">
+      <div class="composer">
+        <label for="noteInput">New note</label>
+        <div class="input-row">
+          <input type="text" id="noteInput" placeholder="Write a note">
+          <button class="add-btn" onclick="addNote()">Add</button>
+        </div>
+      </div>
+
+      <h2 class="list-title">Your Notes</h2>
+      <ul id="noteList" class="note-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
