@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-1: #0f172a;
+  --bg-2: #111a32;
+  --card: rgba(255, 255, 255, 0.1);
+  --stroke: rgba(255, 255, 255, 0.14);
+  --text: #ebf1ff;
+  --muted: #a7b4cf;
+  --accent: #f97316;
+  --accent-2: #38bdf8;
+  --shadow: 0 24px 72px rgba(2, 8, 22, 0.44);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.2), transparent 24%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+}
+
+.page {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 28px 16px 36px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--stroke);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.hero {
+  text-align: center;
+  padding: 22px;
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+h1,
+p,
+figcaption {
+  margin-top: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.lead {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.controls {
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  color: #f8fbff;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
+  transition: transform 0.18s ease;
+}
+
+.buttons button:hover {
+  transform: translateY(-1px);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.item {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(9, 15, 28, 0.46);
+  box-shadow: 0 16px 30px rgba(3, 10, 26, 0.35);
+}
+
+.item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.item figcaption {
+  margin: 0;
+  padding: 10px 12px;
+  color: #d2e4ff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 680px) {
+  .page {
+    padding: 14px 10px 24px;
+  }
+
+  .hero,
+  .controls {
+    border-radius: 18px;
+  }
+
+  .hero {
+    padding: 16px;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
+}
