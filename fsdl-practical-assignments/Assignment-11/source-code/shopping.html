@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Mini Store</p>
+        <h1>Shopping Cart</h1>
+        <p class="subtitle">A clean, modern cart layout with live quantity updates and a growing total.</p>
+      </div>
+
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Live cart
+      </div>
+    </section>
+
+    <section class="layout">
+      <article class="product card">
+        <div class="product-top">
+          <div class="product-art">
+            <span>Product</span>
+          </div>
+          <div>
+            <p class="product-label">Item 1</p>
+            <h2>Product 1</h2>
+            <p class="price">Price: ₹500</p>
+          </div>
+        </div>
+
+        <div class="quantity-box">
+          <button class="qty-btn" onclick="decrease(1)" aria-label="Decrease quantity">−</button>
+          <span class="quantity" id="qty1">0</span>
+          <button class="qty-btn" onclick="increase(1)" aria-label="Increase quantity">+</button>
+        </div>
+
+        <p class="helper">₹<span id="total1">0</span></p>
+      </article>
+
+      <article class="product card">
+        <div class="product-top">
+          <div class="product-art">
+            <span>Product</span>
+          </div>
+          <div>
+            <p class="product-label">Item 2</p>
+            <h2>Product 2</h2>
+            <p class="price">Price: ₹800</p>
+          </div>
+        </div>
+
+        <div class="quantity-box">
+          <button class="qty-btn" onclick="decrease(2)" aria-label="Decrease quantity">−</button>
+          <span class="quantity" id="qty2">0</span>
+          <button class="qty-btn" onclick="increase(2)" aria-label="Increase quantity">+</button>
+        </div>
+
+        <p class="helper">₹<span id="total2">0</span></p>
+      </article>
+
+      <article class="product card">
+        <div class="product-top">
+          <div class="product-art">
+            <span>Product</span>
+          </div>
+          <div>
+            <p class="product-label">Item 3</p>
+            <h2>Product 3</h2>
+            <p class="price">Price: ₹1200</p>
+          </div>
+        </div>
+
+        <div class="quantity-box">
+          <button class="qty-btn" onclick="decrease(3)" aria-label="Decrease quantity">−</button>
+          <span class="quantity" id="qty3">0</span>
+          <button class="qty-btn" onclick="increase(3)" aria-label="Increase quantity">+</button>
+        </div>
+
+        <p class="helper">₹<span id="total3">0</span></p>
+      </article>
+
+      <aside class="summary card">
+        <p class="summary-label">Order Summary</p>
+        <h3>Total</h3>
+        <div class="total-row">
+          <span>Current amount</span>
+          <strong>₹<span id="grandTotal">0</span></strong>
+        </div>
+        <div class="summary-note">
+          <span class="note-chip">Auto-updating</span>
+          <span>Qty and total stay in sync with every click.</span>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

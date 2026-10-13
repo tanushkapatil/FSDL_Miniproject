@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="faq-page">
+    <section class="faq-card">
+      <p class="eyebrow">Help Center</p>
+      <h1>Frequently Asked Questions</h1>
+      <p class="intro">Click a question to show or hide the answer.</p>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What is an FAQ accordion?</button>
+        <div class="faq-answer">
+          <p>An FAQ accordion is a list of questions where each answer can expand or collapse when you click the question.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How does this page work?</button>
+        <div class="faq-answer">
+          <p>JavaScript adds or removes an open class on the clicked item, and CSS shows or hides the answer.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Can more than one answer be open?</button>
+        <div class="faq-answer">
+          <p>Yes. Each question works separately, so you can open multiple answers at the same time.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Is this responsive?</button>
+        <div class="faq-answer">
+          <ul>
+            <li>The layout adjusts to smaller screens automatically</li>
+            <li>Looks great on mobile and desktop devices</li>
+            <li>Font sizes scale based on screen width</li>
+            <li>Touch-friendly buttons and spacing on mobile</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

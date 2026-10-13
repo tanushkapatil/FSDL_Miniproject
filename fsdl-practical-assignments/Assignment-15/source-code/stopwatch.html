@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Timekeeper</p>
+        <h1>Stopwatch</h1>
+        <p class="subtitle">Simple precision timing with start, stop, and reset controls.</p>
+      </div>
+
+      <div class="live-badge">
+        <span class="dot"></span>
+        Ready
+      </div>
+    </section>
+
+    <section class="app card">
+      <p class="timer-label">Elapsed Time</p>
+      <h2 id="time">00:00:00</h2>
+
+      <div class="controls" aria-label="Stopwatch controls">
+        <button class="btn start" onclick="start()">Start</button>
+        <button class="btn stop" onclick="stop()">Stop</button>
+        <button class="btn reset" onclick="reset()">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

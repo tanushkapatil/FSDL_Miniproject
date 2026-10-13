@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #1e2430;
+  background:
+    radial-gradient(circle at top left, #ffe9d8, transparent 30%),
+    radial-gradient(circle at top right, #dbe9ff, transparent 28%),
+    #f6f7fb;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 40px 16px 56px;
+}
+
+.hero {
+  width: min(1100px, 100%);
+  margin: 0 auto 26px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ff6b3d;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  color: #17345d;
+}
+
+.subtitle {
+  margin: 12px auto 0;
+  max-width: 62ch;
+  line-height: 1.6;
+  color: #5b6275;
+}
+
+.container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(20, 34, 63, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(20, 34, 63, 0.16);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: #17345d;
+}
+
+.card p {
+  margin: 0 0 16px;
+  color: #5b6275;
+  font-weight: 600;
+}
+
+button {
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 14px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #17345d, #2d5aa3);
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(23, 52, 93, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(23, 52, 93, 0.24);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(122, 168, 255, 0.45);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 24px 12px 40px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+}

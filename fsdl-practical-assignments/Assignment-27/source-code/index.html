@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h1>Weather Dashboard</h1>
+    <p>Weekly Temperature, Rainfall & Weather Distribution</p>
+
+    <div class="charts">
+
+      <div class="chart-box full">
+        <h3>Temperature (Line Chart)</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h3>Rainfall (Bar Chart)</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h3>Weather Distribution (Pie)</h3>
+        <canvas id="pieChart"></canvas>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="module" src="/main.js"></script>
+
+</body>
+</html>

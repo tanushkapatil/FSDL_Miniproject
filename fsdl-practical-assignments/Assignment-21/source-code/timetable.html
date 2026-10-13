@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Timetable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Academic Planner</p>
+        <h1>Weekly Timetable</h1>
+        <p class="subtitle">A clear view of classes, lab sessions, and break slots across the week.</p>
+      </div>
+      <span class="tag">Mon - Fri</span>
+    </section>
+
+    <section class="table-wrap card">
+      <div class="table-scroll" role="region" aria-label="Weekly timetable" tabindex="0">
+        <table>
+          <tr>
+            <th>Day/Time</th>
+            <th>9-10</th>
+            <th>10-11</th>
+            <th>11-12</th>
+            <th>12-1</th>
+            <th>1-2</th>
+            <th>2-3</th>
+          </tr>
+
+          <tr>
+            <td class="day">Monday</td>
+            <td>Math</td>
+            <td>Physics</td>
+            <td>Chemistry</td>
+            <td colspan="2" class="break">Break</td>
+            <td>English</td>
+          </tr>
+
+          <tr>
+            <td class="day">Tuesday</td>
+            <td>Biology</td>
+            <td colspan="2" class="lab">Lab</td>
+            <td>Math</td>
+            <td class="break">Break</td>
+            <td>Computer</td>
+          </tr>
+
+          <tr>
+            <td class="day">Wednesday</td>
+            <td rowspan="2" class="workshop">Workshop</td>
+            <td>Math</td>
+            <td>Physics</td>
+            <td colspan="2" class="break">Break</td>
+            <td>English</td>
+          </tr>
+
+          <tr>
+            <td class="day">Thursday</td>
+            <td>Chemistry</td>
+            <td>Biology</td>
+            <td colspan="2" class="break">Break</td>
+            <td>Sports</td>
+          </tr>
+
+          <tr>
+            <td class="day">Friday</td>
+            <td>Computer</td>
+            <td>Math</td>
+            <td>Physics</td>
+            <td colspan="2" class="break">Break</td>
+            <td class="project">Project</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

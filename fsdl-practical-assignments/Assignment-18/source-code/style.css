@@ -1,0 +1,207 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-1: #0f172a;
+  --bg-2: #111827;
+  --card: rgba(255, 255, 255, 0.1);
+  --stroke: rgba(255, 255, 255, 0.14);
+  --text: #eef4ff;
+  --muted: #a8b6d2;
+  --accent: #f97316;
+  --accent-2: #38bdf8;
+  --shadow: 0 24px 72px rgba(3, 10, 26, 0.44);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.2), transparent 24%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+}
+
+.page {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--stroke);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.tag {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #17233d;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.app {
+  padding: 22px;
+}
+
+.composer label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+#noteInput {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(10, 17, 32, 0.45);
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+#noteInput::placeholder {
+  color: #8d9aba;
+}
+
+.add-btn {
+  border: 0;
+  border-radius: 14px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 700;
+  color: #f8fbff;
+  background: linear-gradient(135deg, var(--accent), #ffb15f);
+  box-shadow: 0 10px 22px rgba(249, 115, 22, 0.24);
+  cursor: pointer;
+}
+
+.list-title {
+  margin: 16px 0 10px;
+  font-size: 1.2rem;
+}
+
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.note-list:empty::before {
+  content: "No notes yet. Add your first note.";
+  display: block;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  color: var(--muted);
+  text-align: center;
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(10, 17, 32, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.note-text {
+  word-break: break-word;
+}
+
+.delete-btn {
+  border: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.95rem;
+  background: rgba(249, 115, 22, 0.14);
+  color: #ff9b65;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 14px 12px 24px;
+  }
+
+  .hero,
+  .app {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .hero {
+    display: grid;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .add-btn {
+    height: 44px;
+  }
+}

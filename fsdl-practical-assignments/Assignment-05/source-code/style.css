@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light {
+  background:
+    radial-gradient(circle at top left, #ffe8d8, transparent 32%),
+    radial-gradient(circle at top right, #dbe9ff, transparent 28%),
+    #f6f7fb;
+  color: #1e2430;
+}
+
+body.dark {
+  background:
+    radial-gradient(circle at top left, rgba(255, 107, 61, 0.12), transparent 32%),
+    radial-gradient(circle at top right, rgba(79, 172, 254, 0.14), transparent 28%),
+    #121826;
+  color: #f4f7fb;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.theme-card {
+  width: min(640px, 100%);
+  padding: 36px 32px;
+  border-radius: 28px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 22px 60px rgba(20, 34, 63, 0.14);
+}
+
+body.dark .theme-card {
+  background: rgba(15, 22, 35, 0.88);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ff6b3d;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  color: inherit;
+}
+
+.subtitle {
+  margin: 12px auto 26px;
+  max-width: 58ch;
+  line-height: 1.7;
+  color: inherit;
+  opacity: 0.78;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  box-shadow: 0 0 0 6px rgba(79, 172, 254, 0.12);
+}
+
+.toggle-btn {
+  border: 0;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #17345d, #2d5aa3);
+  box-shadow: 0 14px 30px rgba(23, 52, 93, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggle-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(23, 52, 93, 0.28);
+}
+
+.toggle-btn:focus-visible {
+  outline: 3px solid rgba(122, 168, 255, 0.45);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .theme-card {
+    padding: 26px 20px;
+    border-radius: 22px;
+  }
+}

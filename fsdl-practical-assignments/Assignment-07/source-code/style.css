@@ -1,0 +1,230 @@
+:root {
+  --bg-1: #fbf7f2;
+  --bg-2: #ffe8d8;
+  --brand: #14306b;
+  --accent: #ff6b3d;
+  --text: #1d2230;
+  --white: #ffffff;
+  --shadow: 0 14px 40px rgba(20, 48, 107, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 10%, var(--bg-2), transparent 38%),
+    radial-gradient(circle at 90% 20%, #f6efe6, transparent 35%),
+    var(--bg-1);
+  min-height: 100vh;
+}
+
+.navbar {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 1.25rem auto 0;
+  padding: 0.8rem 1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--brand);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.menu a,
+.dropbtn {
+  text-decoration: none;
+  color: var(--text);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
+  transition: background-color 0.22s ease, color 0.22s ease;
+}
+
+.menu a:hover,
+.dropbtn:hover,
+.menu a:focus-visible,
+.dropbtn:focus-visible {
+  background: #eef2fb;
+  color: var(--brand);
+  outline: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn::after {
+  content: " +";
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  min-width: 180px;
+  padding: 0.4rem;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 14px 28px rgba(14, 27, 55, 0.15);
+  animation: fadeSlide 0.2s ease;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+}
+
+.dropdown-content a:hover {
+  background: #f2f5fd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.hamburger {
+  display: none;
+  border: 0;
+  background: transparent;
+  width: 42px;
+  height: 36px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brand);
+  margin: 6px auto;
+  width: 24px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hero {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 4rem auto;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--brand);
+}
+
+.hero p {
+  max-width: 52ch;
+  line-height: 1.6;
+}
+
+.features {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.feature-card {
+  padding: 1.2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 12px 30px rgba(20, 48, 107, 0.1);
+}
+
+.feature-card h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+  color: var(--brand);
+}
+
+.feature-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #4b5567;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .menu {
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    right: 0;
+    width: min(260px, 82vw);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 0.55rem;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.open .dropdown-content {
+    position: static;
+    box-shadow: none;
+    border-top: 1px solid #ecedf2;
+    border-radius: 0;
+    margin-top: 0.3rem;
+    padding-top: 0.45rem;
+    display: block;
+  }
+}

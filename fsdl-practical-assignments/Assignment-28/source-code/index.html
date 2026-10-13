@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h1>Student Performance Dashboard</h1>
+    <p>Marks, Attendance & Progress Overview</p>
+
+    <div class="charts">
+
+      <div class="chart-box">
+        <h3>Marks (Bar Chart)</h3>
+        <canvas id="marksChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h3>Attendance (Doughnut)</h3>
+        <canvas id="attendanceChart"></canvas>
+      </div>
+
+      <div class="chart-box full">
+        <h3>Progress (Line Chart)</h3>
+        <canvas id="progressChart"></canvas>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="module" src="/main.js"></script>
+
+</body>
+</html>

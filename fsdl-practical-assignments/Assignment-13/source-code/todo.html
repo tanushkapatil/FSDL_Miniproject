@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Task Planner</p>
+        <h1>To-Do List</h1>
+        <p class="subtitle">Capture your next task, keep momentum, and clear items as you go.</p>
+      </div>
+
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Organized workflow
+      </div>
+    </section>
+
+    <section class="workspace card">
+      <div class="input-row">
+        <div class="field-wrap">
+          <label class="field-label" for="taskInput">New task</label>
+          <input type="text" id="taskInput" placeholder="Enter task">
+        </div>
+        <button class="add-btn" onclick="addTask()">Add Task</button>
+      </div>
+
+      <div class="list-header">
+        <h2>Your Tasks</h2>
+        <span class="list-chip">Live list</span>
+      </div>
+
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
