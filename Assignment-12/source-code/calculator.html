@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Pocket Tool</p>
+      <h1>Calculator</h1>
+      <p class="subtitle">A clean, responsive calculator with a modern glass surface and clear button hierarchy.</p>
+    </section>
+
+    <section class="calculator-shell">
+      <div class="calculator">
+        <div class="display-card">
+          <label class="display-label" for="display">Expression</label>
+          <input type="text" id="display" readonly aria-label="Calculator display">
+        </div>
+
+        <div class="buttons" aria-label="Calculator buttons">
+          <button class="num" onclick="press('7')">7</button>
+          <button class="num" onclick="press('8')">8</button>
+          <button class="num" onclick="press('9')">9</button>
+          <button class="op" onclick="press('/')">÷</button>
+
+          <button class="num" onclick="press('4')">4</button>
+          <button class="num" onclick="press('5')">5</button>
+          <button class="num" onclick="press('6')">6</button>
+          <button class="op" onclick="press('*')">×</button>
+
+          <button class="num" onclick="press('1')">1</button>
+          <button class="num" onclick="press('2')">2</button>
+          <button class="num" onclick="press('3')">3</button>
+          <button class="op" onclick="press('-')">−</button>
+
+          <button class="zero num" onclick="press('0')">0</button>
+          <button class="utility" onclick="clearDisplay()">C</button>
+          <button class="equals" onclick="calculate()">=</button>
+          <button class="op" onclick="press('+')">+</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
