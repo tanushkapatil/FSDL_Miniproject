@@ -11,8 +11,9 @@
 | **Subject** | FSDL – Full Stack Development Lab |
 
 ## Repository Description
-This repository contains all of my FSDL practical assignments in one place, plus my personal profile
-website, which is hosted from the same repository using GitHub Pages (`docs/` folder).
+This folder (inside my `FSDL_Miniproject` repository) contains all of my FSDL practical assignments in one
+place, plus my personal profile website, which is hosted from the same repository using GitHub Pages
+(the `docs/` folder is published by the workflow in `.github/workflows/pages.yml`).
 
 Every assignment folder contains:
 - `source-code/` – the HTML, CSS and JavaScript of the solution
@@ -55,7 +56,7 @@ Every assignment folder contains:
 Live Link: _will be added after GitHub Pages deployment_
 
 ## Repository Link
-https://github.com/tanushkapatil/fsdl-practical-assignments
+https://github.com/tanushkapatil/FSDL_Miniproject/tree/main/fsdl-practical-assignments
 
 ## Technologies Used
 - **Frontend:** HTML5, CSS3 (Flexbox, Grid, media queries), JavaScript (ES6)
