@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Filter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Catalog</p>
+        <h1>Product Filter</h1>
+        <p class="subtitle">Filter products by category and quickly find what you need.</p>
+      </div>
+      <span class="live-tag">Interactive Filters</span>
+    </section>
+
+    <section class="panel card">
+      <div class="buttons" aria-label="Category filters">
+        <button onclick="filter('all')">All</button>
+        <button onclick="filter('electronics')">Electronics</button>
+        <button onclick="filter('clothing')">Clothing</button>
+      </div>
+
+      <div id="products" class="products">
+        <article class="item electronics">
+          <p class="item-type">Electronics</p>
+          <h2>Laptop</h2>
+        </article>
+        <article class="item electronics">
+          <p class="item-type">Electronics</p>
+          <h2>Phone</h2>
+        </article>
+        <article class="item clothing">
+          <p class="item-type">Clothing</p>
+          <h2>T-Shirt</h2>
+        </article>
+        <article class="item clothing">
+          <p class="item-type">Clothing</p>
+          <h2>Jeans</h2>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
