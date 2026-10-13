@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Text Lab</p>
+        <h1>String Operations</h1>
+        <p class="subtitle">Transform text instantly with reverse, uppercase, lowercase, and length tools.</p>
+      </div>
+
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Live text utilities
+      </div>
+    </section>
+
+    <section class="workspace card">
+      <div class="input-area">
+        <label class="field-label" for="textInput">Input text</label>
+        <input type="text" id="textInput" placeholder="Enter text">
+      </div>
+
+      <div class="buttons" aria-label="String operations">
+        <button class="primary" onclick="reverseText()">Reverse</button>
+        <button class="secondary" onclick="toUpper()">Uppercase</button>
+        <button class="secondary" onclick="toLower()">Lowercase</button>
+        <button class="accent" onclick="getLength()">Length</button>
+      </div>
+
+      <div class="result-card">
+        <p class="result-label">Result</p>
+        <p id="result" class="result-text">Your output will appear here.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
